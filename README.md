@@ -4,6 +4,31 @@
 
 `<leader>` 当前设置为空格键。
 
+## 插件功能总览
+
+| 配置文件 | 插件仓库 | 用途 |
+| --- | --- | --- |
+| `lua/plugins/aerial.lua` | [stevearc/aerial.nvim](https://github.com/stevearc/aerial.nvim) | 代码大纲与符号导航，提供 `{` / `}` 在代码符号间跳转 |
+| `lua/plugins/auto-session.lua` | [rmagatti/auto-session](https://github.com/rmagatti/auto-session) | 自动保存和恢复会话，保留 buffer、窗口、tab、折叠等状态 |
+| `lua/plugins/conform.lua` | [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) | 代码格式化配置，Lua 使用 `stylua`，前端与 JSON/YAML 使用 `prettier` |
+| `lua/plugins/dropbar.lua` | [Bekaboo/dropbar.nvim](https://github.com/Bekaboo/dropbar.nvim) | 顶部 winbar 面包屑导航，支持选择符号和上下文跳转 |
+| `lua/plugins/flash.lua` | [folke/flash.nvim](https://github.com/folke/flash.nvim) | 快速跳转与 Treesitter 结构跳转，并自定义跳转高亮 |
+| `lua/plugins/gitsigns.lua` | [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Git hunk 导航、暂存、重置、预览、blame 与 diff |
+| `lua/plugins/lspconfig.lua` | [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP 配置，启用 HTML、CSS、JSON、TypeScript、Vue、Tailwind CSS 支持 |
+| `lua/plugins/multicursor.lua` | [jake-stewart/multicursor.nvim](https://github.com/jake-stewart/multicursor.nvim) | 多光标编辑，支持按行、按匹配项和鼠标添加光标 |
+| `lua/plugins/nvimtree.lua` | [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) | 文件树配置，启用文件夹图标和目录尾部斜杠显示 |
+| `lua/plugins/open-in-nvim.lua` | [pzehrel/open-in-nvim](https://github.com/pzehrel/open-in-nvim) | 加载自定义 `open-in-nvim` 插件，用于从外部打开文件到 Neovim |
+| `lua/plugins/render-markdown.lua` | [MeanderingProgrammer/render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) | Markdown 渲染增强，依赖 Treesitter 和 mini.nvim |
+| `lua/plugins/schemastore.lua` | [b0o/SchemaStore.nvim](https://github.com/b0o/SchemaStore.nvim) | JSON SchemaStore 支持，为 `jsonls` 提供 Schema |
+| `lua/plugins/surround.lua` | [kylechui/nvim-surround](https://github.com/kylechui/nvim-surround) | 环绕符号编辑，例如添加、修改、删除括号或引号 |
+| `lua/plugins/treesitter.lua` | [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | 语法解析与高亮，安装 Lua、Markdown、JSON、前端、Vue、Python、Rust 等 parser |
+| `lua/plugins/ufo.lua` | [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) | 高级代码折叠，优先使用 Treesitter，回退到缩进折叠 |
+
+其他插件目录文件：
+
+- `lua/plugins/nvim-web-devicons.lua`：保留图标插件的空配置占位，实际图标能力由 [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) 提供。
+- `lua/plugins/init.lua`：当前没有启用额外插件，只保留注释示例。
+
 ## 基础操作
 
 - 配置文件：`lua/mappings.lua`
@@ -13,6 +38,41 @@
 | --- | --- | --- |
 | Normal | `;` | 进入命令行模式，相当于按 `:` |
 | Insert | `jk` | 退出插入模式，相当于按 `<Esc>` |
+
+## 删除与修改
+
+- 配置文件：`lua/options.lua`
+- 相关仓库：[Neovim](https://github.com/neovim/neovim)
+
+| 模式 | 快捷键 | 用途 |
+| --- | --- | --- |
+| Normal / Visual | `d` | 删除内容但不写入默认寄存器，避免覆盖粘贴内容 |
+| Normal / Visual | `c` | 修改内容但不写入默认寄存器，避免覆盖粘贴内容 |
+| Normal | `x` | 删除单个字符但不写入默认寄存器，避免覆盖粘贴内容 |
+
+## 窗口移动
+
+- 配置文件：`lua/mappings.lua`
+- 相关仓库：[NvChad/NvChad](https://github.com/NvChad/NvChad)
+
+| 模式 | 快捷键 | 用途 |
+| --- | --- | --- |
+| Normal | `<C-w>j` | 将当前窗口移动到下方 |
+| Normal | `<C-w>k` | 将当前窗口移动到上方 |
+| Normal | `<C-w>h` | 将当前窗口移动到左侧 |
+| Normal | `<C-w>l` | 将当前窗口移动到右侧 |
+| Normal | `<C-w>z` | 最大化当前窗口 |
+
+## 禁用默认键位
+
+- 配置文件：`lua/mappings.lua`
+- 相关仓库：[NvChad/NvChad](https://github.com/NvChad/NvChad)
+
+| 模式 | 快捷键 | 原用途 |
+| --- | --- | --- |
+| Normal | `<leader>h` | NvChad 默认终端映射，当前已删除 |
+| Normal | `<leader>v` | NvChad 默认终端映射，当前已删除 |
+| Normal | `<leader>th` | NvChad 默认主题选择映射，当前已删除 |
 
 ## 快速跳转 Flash
 
@@ -97,5 +157,5 @@
 
 ## 说明
 
-- 这份 README 只整理仓库中显式定义的快捷键。
+- 这份 README 整理了 `lua/plugins/` 下的插件用途，以及仓库中显式定义或删除的快捷键。
 - 如果要查看运行时最终生效的所有键位，可以在 Neovim 中执行 `:map`、`:nmap`、`:imap`，或使用 which-key 的提示面板查看 NvChad 默认键位。
