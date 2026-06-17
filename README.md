@@ -323,14 +323,16 @@ Aerial 窗口内常用键位：
 
 ## 注释
 
-- 来源：NvChad 默认映射
+- 配置文件：`lua/plugins/comment.lua`
+- 插件仓库：[nvim-mini/mini.nvim mini.comment](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-comment.md)
 
 | 模式 | 快捷键 | 用途 |
 | --- | --- | --- |
 | Normal | `<leader>/` | 切换当前行注释 |
 | Visual | `<leader>/` | 切换选区注释 |
 | Normal | `gcc` | 切换当前行注释 |
-| Visual / Operator | `gc` | 切换注释 |
+| Visual | `gc` | 切换选区注释 |
+| Operator | `gc{motion}` | 切换 motion 覆盖范围的注释，例如 `gcip` 切换当前段落 |
 
 ## 终端
 
