@@ -21,6 +21,6 @@ vim.o.showbreak = "↳ "
 
 -- c\d\x 指令删除的内容都不会进粘贴板
 vim.keymap.set({ "n", "v" }, "d", '"_d')
-vim.keymap.set({ "n", "v" }, "c", '"_c')
-vim.keymap.set("n", "x", '"_x')
+-- vim.keymap.set({ "n", "v" }, "c", '"_c')
+-- vim.keymap.set("n", "x", '"_x')
 

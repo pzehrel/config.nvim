@@ -24,6 +24,41 @@ map("n", "<C-w>z", "<cmd>wincmd _ | wincmd |<CR>", { desc = "Maximize window" })
 -- 删除 NvChad 默认终端映射
 del("n", "<leader>h")
 del("n", "<leader>v")
+-- 新终端映射: leader + tv / th
+map("n", "<leader>tv", function()
+  require("nvchad.term").new { pos = "vsp" }
+end, { desc = "terminal new vertical term" })
+map("n", "<leader>th", function()
+  require("nvchad.term").new { pos = "sp" }
+end, { desc = "terminal new horizontal term" })
+
 -- 删除 NvChad 默认的 <leader>th（themes）
---
--- del("n", "<leader>th")
+del("n", "<leader>th")
+-- theme 切换映射到新键位 leader-mt（原 <leader>th 已被终端占用）
+map("n", "<leader>mt", function()
+  require("nvchad.themes").open()
+end, { desc = "telescope nvchad themes" })
+
+
+-- 代码大纲窗口插件
+map("n", "<leader>a", "<cmd>AerialToggle!<CR>", { desc = "Aerial: toggle outline" })
+
+-- 聚焦或打开 quickfix 窗口
+map("n", "<leader>q", function()
+  for _, win in ipairs(vim.fn.getwininfo()) do
+    if win.quickfix == 1 then
+      vim.cmd(win.winnr .. "wincmd w")
+      return
+    end
+  end
+  vim.cmd "copen"
+end, { desc = "Focus or open quickfix" })
+
+
+
+-- diffview.nvim: git diff / merge / file history
+map("n", "<leader>gd", "<cmd>DiffviewOpen<CR>", { desc = "Diffview: open git diff" })
+map("n", "<leader>gD", "<cmd>DiffviewOpen -- %<CR>", { desc = "Diffview: open current file diff" })
+map("n", "<leader>gh", "<cmd>DiffviewFileHistory<CR>", { desc = "Diffview: open file history" })
+map("n", "<leader>gH", "<cmd>DiffviewFileHistory %<CR>", { desc = "Diffview: open current file history" })
+map("n", "<leader>gq", "<cmd>DiffviewClose<CR>", { desc = "Diffview: close" })

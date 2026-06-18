@@ -6,21 +6,25 @@
 local M = {}
 
 M.base46 = {
-  theme = "one_light",
-  theme_toggle = { "flex-light", "github_dark" },
 
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+	theme = "flexoki-light",
+  theme_toggle = {"flexoki-light", "tokyodark"},
+
+  -- 注释可以亮一点
+	hl_override = {
+		Comment = { fg = { "light_grey", 5 }, italic = true },
+		["@comment"] = { fg = { "light_grey", 5 }, italic = true },
+	},
+
+
+	hl_add = {
+		-- diffview: 只保留 diff 背景，不覆盖代码语法前景色
+		DiffviewDiffAdd = { bg = { "green", "black", 85 } },
+		DiffviewDiffText = { bg = { "green", "black", 70 } },
+		DiffviewDiffChange = { bg = { "green", "black", 85 } },
+		DiffviewDiffDelete = { bg = { "red", "black", 70 } },
+	},
 }
-
--- M.nvdash = { load_on_startup = true }
--- M.ui = {
---       tabufline = {
---          lazyload = false
---      }
--- }
 
 M.term = {
   winopts = { number = true, relativenumber = true },

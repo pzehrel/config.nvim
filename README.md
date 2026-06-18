@@ -174,7 +174,32 @@ NvimTree 窗口内常用键位：
 | Normal | `<leader>tw` | 切换 word diff 显示 |
 | Operator / Visual | `ih` | 选择当前 hunk 文本对象 |
 
-## Flash 快速跳转
+## Git Diffview
+
+- 配置文件：`lua/plugins/diffview.lua`、`lua/mappings.lua`
+- 插件仓库：[sindrets/diffview.nvim](https://github.com/sindrets/diffview.nvim)
+
+| 模式 | 快捷键 | 用途 |
+| --- | --- | --- |
+| Normal | `<leader>gd` | 打开 Git diff 面板 |
+| Normal | `<leader>gD` | 打开当前文件的 Git diff 面板 |
+| Normal | `<leader>gh` | 打开文件历史面板 |
+| Normal | `<leader>gH` | 打开当前文件的文件历史面板 |
+| Normal | `<leader>gq` | 关闭 Diffview 窗口 |
+
+Diffview 窗口内常用键位可查看 `:help diffview-maps`。
+
+## Git Neogit
+
+- 配置文件：`lua/plugins/neogit.lua`
+- 插件仓库：[NeogitOrg/neogit](https://github.com/NeogitOrg/neogit)
+
+| 模式 | 快捷键 | 用途 |
+| --- | --- | --- |
+| Normal | `<leader>gg` | 打开 Neogit 状态面板 |
+| Normal | `<leader>gc` | 打开 Neogit 提交界面 |
+
+Neogit 面板内键位可查看 `:help neogit-mappings`。
 
 - 配置文件：`lua/plugins/flash.lua`
 - 插件仓库：[folke/flash.nvim](https://github.com/folke/flash.nvim)
@@ -241,15 +266,31 @@ NvimTree 窗口内常用键位：
 | Normal | `[;` | 跳到当前上下文的起始位置 |
 | Normal | `];` | 选择下一个上下文 |
 
+## Quickfix
+
+- 配置文件：`lua/mappings.lua`
+- 来源：Neovim 内置 quickfix + 本仓库自定义映射
+
+| 模式 | 快捷键 | 用途 |
+| --- | --- | --- |
+| Normal | `<leader>q` | 聚焦已有的 quickfix 窗口，没有则打开 |
+| Normal | `:copen` | 打开 quickfix 窗口 |
+| Normal | `:cclose` | 关闭 quickfix 窗口 |
+| Normal | `:cnext` / `:cprev` | 跳到下一个 / 上一个条目 |
+| Normal | `:cnfile` / `:cpfile` | 跳到下一个 / 上一个文件 |
+| Normal | `:cdo cmd` | 对 quickfix 中每个条目执行命令 |
+| Normal | `:cfdo cmd` | 对 quickfix 中每个文件执行命令 |
+
 ## Aerial 代码大纲
 
-- 配置文件：`lua/plugins/aerial.lua`
+- 配置文件：`lua/plugins/aerial.lua`、`lua/mappings.lua`
 - 插件仓库：[stevearc/aerial.nvim](https://github.com/stevearc/aerial.nvim)
 
 全局键位：
 
 | 模式 | 快捷键 | 用途 |
 | --- | --- | --- |
+| Normal | `<leader>a` | 打开或关闭 Aerial 代码大纲窗口 |
 | Normal | `{` | 跳到上一个 Aerial 代码符号 |
 | Normal | `}` | 跳到下一个 Aerial 代码符号 |
 
@@ -336,10 +377,13 @@ Aerial 窗口内常用键位：
 
 ## 终端
 
-- 来源：[NvChad/NvChad](https://github.com/NvChad/NvChad)
+- 配置文件：`lua/mappings.lua`
+- 插件仓库：[NvChad/NvChad](https://github.com/NvChad/NvChad)
 
 | 模式 | 快捷键 | 用途 |
 | --- | --- | --- |
+| Normal | `<leader>tv` | 在右侧垂直分割打开新终端 |
+| Normal | `<leader>th` | 在下方水平分割打开新终端 |
 | Normal / Terminal | `<A-i>` | 切换浮动终端 |
 | Normal / Terminal | `<A-h>` | 切换水平终端 |
 | Normal / Terminal | `<A-v>` | 切换垂直终端 |
@@ -354,6 +398,7 @@ Aerial 窗口内常用键位：
 
 ## WhichKey 与 NvChad
 
+- 配置文件：`lua/mappings.lua`
 - 来源：[NvChad/NvChad](https://github.com/NvChad/NvChad)
 
 | 模式 | 快捷键 | 用途 |
@@ -361,6 +406,7 @@ Aerial 窗口内常用键位：
 | Normal | `<leader>wK` | 显示全部 keymaps |
 | Normal | `<leader>wk` | 查询指定前缀的 keymaps |
 | Normal | `<leader>ch` | 打开 NvChad cheatsheet |
+| Normal | `<leader>mt` | 打开 NvChad 主题选择器 |
 | Normal | `<leader>n` | 切换行号 |
 | Normal | `<leader>rn` | 切换相对行号 |
 | Normal | `<Esc>` | 清除搜索高亮 |
@@ -371,7 +417,7 @@ Aerial 窗口内常用键位：
 
 | 模式 | 快捷键 | 原用途 |
 | --- | --- | --- |
-| Normal | `<leader>th` | 打开 NvChad 主题选择器 |
+| Normal | `<leader>th` | 打开 NvChad 主题选择器（已被终端快捷键占用） |
 
 ## 没有快捷键的插件
 

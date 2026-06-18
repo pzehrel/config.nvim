@@ -9,10 +9,10 @@ return {
     require("auto-dark-mode").setup({
       update_interval = 3000,
       set_dark_mode = function()
-        require("utils.theme").set_theme("onedark")
+        require("utils.theme").set_theme("tokyodark")
       end,
       set_light_mode = function()
-        require("utils.theme").set_theme("one_light")
+        require("utils.theme").set_theme("flexoki-light")
       end,
     })
   end,
