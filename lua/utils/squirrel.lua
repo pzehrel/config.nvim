@@ -83,6 +83,29 @@ function M.get_state()
   return nil
 end
 
+-- 默认鼠须管输入源 ID
+local SQUIRREL_INPUT_SOURCE = "im.rime.inputmethod.Squirrel.Hans"
+
+---激活鼠须管输入源（在切换 ascii/nascii 前调用，避免当前不是鼠须管时命令无效）
+---@param source_id? string
+---@return boolean ok
+function M.activate(source_id)
+  source_id = source_id or SQUIRREL_INPUT_SOURCE
+  local ok, output = exec({ "--select-input-source", source_id })
+
+  -- 失败时尝试先启用再选择
+  if not ok then
+    exec({ "--enable-input-source", source_id })
+    ok, output = exec({ "--select-input-source", source_id })
+  end
+
+  if not ok then
+    notify_error("无法激活鼠须管输入源: " .. tostring(output))
+  end
+
+  return ok
+end
+
 ---切换到中文输入法（nascii）
 ---@param force? boolean 为 true 时跳过缓存检查，强制调用 CLI
 ---@return boolean ok
@@ -91,6 +114,7 @@ function M.to_chinese(force)
     return true
   end
 
+  M.activate()
   local ok, _ = exec({ "--nascii" })
   if ok then
     cached_state = "nascii"
@@ -106,6 +130,7 @@ function M.to_english(force)
     return true
   end
 
+  M.activate()
   local ok, _ = exec({ "--ascii" })
   if ok then
     cached_state = "ascii"
