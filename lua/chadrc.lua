@@ -17,6 +17,8 @@ M.base46 = {
 	},
 
 	-- 仅针对暗色主题 tokyodark，把主背景色改为和 Ghostty TokyoNight 一致
+	-- 这里只覆盖部分字段，LuaLS 会报 missing-fields，忽略即可
+	---@diagnostic disable: missing-fields
 	changed_themes = {
 		tokyodark = {
 			base_16 = {
@@ -24,6 +26,7 @@ M.base46 = {
 			},
 		},
 	},
+	---@diagnostic enable: missing-fields
 
 
 	hl_add = {
