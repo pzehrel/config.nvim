@@ -4,7 +4,7 @@
 -- @see: https://github.com/NvChad/NvChad/issues/2721
 return {
   "f-person/auto-dark-mode.nvim",
-  lazy = false,
+  event = "VeryLazy",
   config = function()
     require("auto-dark-mode").setup({
       update_interval = 3000,

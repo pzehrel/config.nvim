@@ -7,7 +7,7 @@ local M = {}
 
 M.base46 = {
 
-	theme = "flexoki-light",
+	theme = "tokyodark",
   theme_toggle = {"flexoki-light", "tokyodark"},
 
   -- 注释可以亮一点
